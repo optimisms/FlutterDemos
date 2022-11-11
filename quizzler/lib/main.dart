@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quiz_question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -27,16 +28,11 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
-  List<String> questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
-  ];
-
-  List<bool> answers = [
-    false,
-    true,
-    true,
+  List<QuizQuestion> questions = [
+    QuizQuestion('You can lead a cow down stairs but not up stairs.', false),
+    QuizQuestion(
+        'Approximately one quarter of human bones are in the feet.', true),
+    QuizQuestion('A slug\'s blood is green.', true),
   ];
 
   int questionNum = 0;
@@ -49,7 +45,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void updateScore(bool answerClicked) {
-    bool correctAnswer = answers[questionNum];
+    bool correctAnswer = questions[questionNum].answer;
     if (correctAnswer == answerClicked) {}
   }
 
@@ -72,7 +68,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNum],
+                questions[questionNum].text,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,

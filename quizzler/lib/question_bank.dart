@@ -1,6 +1,8 @@
 import 'quiz_question.dart';
 
 class QuestionBank {
+  int _qNum = 0;
+
   final List<QuizQuestion> _questionBank = [
     QuizQuestion('Some cats are actually allergic to humans', true),
     QuizQuestion('You can lead a cow down stairs but not up stairs.', false),
@@ -30,15 +32,18 @@ class QuestionBank {
         true),
   ];
 
-  String getQuestionText(int qNum) {
-    return _questionBank[qNum].text;
+  void updateQuestionNum() {
+    _qNum++;
+    if (_qNum >= _questionBank.length) {
+      _qNum = 0;
+    }
   }
 
-  bool getQuestionAnswer(int qNum) {
-    return _questionBank[qNum].answer;
+  String getQuestionText() {
+    return _questionBank[_qNum].getText();
   }
 
-  int length() {
-    return _questionBank.length;
+  bool getQuestionAnswer() {
+    return _questionBank[_qNum].getAnswer();
   }
 }

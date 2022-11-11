@@ -33,20 +33,13 @@ class _QuizPageState extends State<QuizPage> {
   void buttonClicked(bool answerClicked) {
     setState(() {
       updateScore(answerClicked);
-      updateQuestionNum();
+      myBank.updateQuestionNum();
     });
   }
 
   void updateScore(bool answerClicked) {
-    bool correctAnswer = myBank.getQuestionAnswer(qNum);
+    bool correctAnswer = myBank.getQuestionAnswer();
     if (correctAnswer == answerClicked) {}
-  }
-
-  void updateQuestionNum() {
-    qNum++;
-    if (qNum >= myBank.length()) {
-      qNum = 0;
-    }
   }
 
   @override
@@ -61,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                myBank.getQuestionText(qNum),
+                myBank.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,

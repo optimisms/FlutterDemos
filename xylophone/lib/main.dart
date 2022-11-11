@@ -9,82 +9,36 @@ class XylophoneApp extends StatelessWidget {
     player.play(AssetSource('note$soundNum.wav'));
   }
 
+  Widget buildKey(Color color, int noteNum) {
+    return Expanded(
+      child: TextButton(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(color),
+        ),
+        onPressed: () {
+          playNote(noteNum);
+        },
+        child: const Text(''),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                ),
-                onPressed: () {
-                  playNote(1);
-                },
-                child: const Text(''),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.orange),
-                ),
-                onPressed: () {
-                  playNote(2);
-                },
-                child: const Text(''),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.yellow),
-                ),
-                onPressed: () {
-                  playNote(3);
-                },
-                child: const Text(''),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green),
-                ),
-                onPressed: () {
-                  playNote(4);
-                },
-                child: const Text(''),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.lightBlue),
-                ),
-                onPressed: () {
-                  playNote(5);
-                },
-                child: const Text(''),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  playNote(6);
-                },
-                child: const Text(''),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.purple),
-                ),
-                onPressed: () {
-                  playNote(7);
-                },
-                child: const Text(''),
-              ),
+              buildKey(Colors.red, 1),
+              buildKey(Colors.orange, 2),
+              buildKey(Colors.yellow, 3),
+              buildKey(Colors.green, 4),
+              buildKey(Colors.lightBlue, 5),
+              buildKey(Colors.blue, 6),
+              buildKey(Colors.purple, 7),
             ],
           ),
         ),

@@ -13,7 +13,7 @@ class XylophoneApp extends StatelessWidget {
     return Expanded(
       child: TextButton(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(color),
+          backgroundColor: MaterialStateProperty.all<Color>(color),
         ),
         onPressed: () {
           playNote(noteNum);
@@ -27,7 +27,7 @@ class XylophoneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -16,8 +16,45 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
       ),
-      body: const Center(
-        child: Text('Body Text'),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+              child: Row(
+            children: const <Widget>[
+              ReusableCard(
+                color: activeCardColor,
+                cardChild: IconContent(image: Icons.male, text: 'MALE'),
+              ),
+              ReusableCard(
+                color: activeCardColor,
+                cardChild: IconContent(image: Icons.female, text: 'FEMALE'),
+              ),
+            ],
+          )),
+          const ReusableCard(
+            color: activeCardColor,
+            cardChild: Text(''),
+          ),
+          Expanded(
+              child: Row(
+            children: const <Widget>[
+              ReusableCard(
+                color: activeCardColor,
+                cardChild: Text(''),
+              ),
+              ReusableCard(
+                color: activeCardColor,
+                cardChild: Text(''),
+              ),
+            ],
+          )),
+          Container(
+            color: bottomContainerColor,
+            margin: const EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},

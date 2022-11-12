@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'question_bank.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(Quizzler());
 
@@ -31,8 +32,29 @@ class _QuizPageState extends State<QuizPage> {
 
   void buttonClicked(bool answerClicked) {
     setState(() {
-      updateScore(answerClicked);
-      myBank.updateQuestionNum();
+      if (myBank.isFinished()) {
+        Alert(
+          context: context,
+          type: AlertType.none,
+          title: "THE END!",
+          desc: "You're reached the end of the quiz.",
+          buttons: [
+            DialogButton(
+              onPressed: () => Navigator.pop(context),
+              width: 120,
+              child: const Text(
+                "Start Over",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            )
+          ],
+        ).show();
+        myBank.reset();
+        scoreKeeper = [];
+      } else {
+        updateScore(answerClicked);
+        myBank.updateQuestionNum();
+      }
     });
   }
 

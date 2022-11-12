@@ -11,7 +11,4 @@ class QuizQuestion {
   bool getAnswer() {
     return _answer;
   }
-
-  bool get answer => _answer;
-  String get text => _text;
 }

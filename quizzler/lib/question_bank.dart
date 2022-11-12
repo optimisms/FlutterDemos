@@ -32,18 +32,29 @@ class QuestionBank {
         true),
   ];
 
+  void reset() {
+    _qNum = 0;
+  }
+
+  bool isFinished() {
+    return _qNum >= _questionBank.length;
+  }
+
   void updateQuestionNum() {
-    _qNum++;
-    if (_qNum >= _questionBank.length) {
-      _qNum = 0;
-    }
+    if (!isFinished()) _qNum++;
   }
 
   String getQuestionText() {
+    if (isFinished()) {
+      return _questionBank[_questionBank.length - 1].getText();
+    }
     return _questionBank[_qNum].getText();
   }
 
   bool getQuestionAnswer() {
+    if (isFinished()) {
+      return _questionBank[_questionBank.length - 1].getAnswer();
+    }
     return _questionBank[_qNum].getAnswer();
   }
 }

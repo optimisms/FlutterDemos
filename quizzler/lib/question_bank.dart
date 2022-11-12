@@ -4,7 +4,7 @@ class QuestionBank {
   int _qNum = 0;
 
   final List<QuizQuestion> _questionBank = [
-    QuizQuestion('Some cats are actually allergic to humans', true),
+    QuizQuestion('Some cats are actually allergic to humans.', true),
     QuizQuestion('You can lead a cow down stairs but not up stairs.', false),
     QuizQuestion(
         'Approximately one quarter of human bones are in the feet.', true),

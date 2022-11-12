@@ -27,7 +27,6 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  int qNum = 0;
   QuestionBank myBank = QuestionBank();
 
   void buttonClicked(bool answerClicked) {
@@ -39,7 +38,21 @@ class _QuizPageState extends State<QuizPage> {
 
   void updateScore(bool answerClicked) {
     bool correctAnswer = myBank.getQuestionAnswer();
-    if (correctAnswer == answerClicked) {}
+    if (correctAnswer == answerClicked) {
+      scoreKeeper.add(
+        const Icon(
+          Icons.check,
+          color: Colors.green,
+        ),
+      );
+    } else {
+      scoreKeeper.add(
+        const Icon(
+          Icons.close,
+          color: Colors.red,
+        ),
+      );
+    }
   }
 
   @override
